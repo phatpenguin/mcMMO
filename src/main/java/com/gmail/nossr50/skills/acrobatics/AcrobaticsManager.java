@@ -5,6 +5,7 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.LightningStrike;
 import org.bukkit.entity.Player;
 
+import com.gmail.nossr50.mcMMO;
 import com.gmail.nossr50.datatypes.player.McMMOPlayer;
 import com.gmail.nossr50.datatypes.skills.SkillType;
 import com.gmail.nossr50.locale.LocaleLoader;
@@ -58,6 +59,7 @@ public class AcrobaticsManager extends SkillManager {
             // Why do we check respawn cooldown here?
             if (System.currentTimeMillis() >= mcMMOPlayer.getRespawnATS() + Misc.PLAYER_RESPAWN_COOLDOWN_SECONDS) {
                 applyXpGain(damage * Acrobatics.dodgeXpModifier);
+                mcMMO.p.debug("[Award XP] " + player.getName() + " " + SkillType.ACROBATICS + " Dodge Damage=" + damage);
             }
 
             return modifiedDamage;
@@ -84,6 +86,7 @@ public class AcrobaticsManager extends SkillManager {
         if (!isFatal(modifiedDamage) && isSuccessfulRoll(Acrobatics.rollMaxChance, Acrobatics.rollMaxBonusLevel)) {
             player.sendMessage(LocaleLoader.getString("Acrobatics.Roll.Text"));
             applyXpGain(damage * Acrobatics.rollXpModifier);
+            mcMMO.p.debug("[Award XP] " + getPlayer().getName() + " " + SkillType.ACROBATICS + " ROLL " + damage);
 
             return modifiedDamage;
         }
@@ -106,11 +109,13 @@ public class AcrobaticsManager extends SkillManager {
         if (!isFatal(modifiedDamage) && isSuccessfulRoll(Acrobatics.gracefulRollMaxChance, Acrobatics.gracefulRollMaxBonusLevel)) {
             getPlayer().sendMessage(LocaleLoader.getString("Acrobatics.Ability.Proc"));
             applyXpGain(damage * Acrobatics.rollXpModifier);
+            mcMMO.p.debug("[Award XP] " + getPlayer().getName() + " " + SkillType.ACROBATICS + " GRACEFUL ROLL " + damage);
 
             return modifiedDamage;
         }
         else if (!isFatal(damage)) {
             applyXpGain(damage * Acrobatics.fallXpModifier);
+            mcMMO.p.debug("[Award XP] " + getPlayer().getName() + " " + SkillType.ACROBATICS + " FALL " + damage);
         }
 
         return damage;

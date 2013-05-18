@@ -156,6 +156,7 @@ public class RepairManager extends SkillManager {
 
         // Give out XP like candy
         applyXpGain((int) ((startDurability - newDurability) * repairable.getXpMultiplier()) * 10);
+        mcMMO.p.debug("[Award XP] " + player.getName() + " " + SkillType.REPAIR + " " + event.getEventName() + " Durability difference = " + (startDurability - newDurability));
 
         // BWONG BWONG BWONG
         player.playSound(player.getLocation(), Sound.ANVIL_USE, Misc.ANVIL_USE_VOLUME, Misc.ANVIL_USE_PITCH);

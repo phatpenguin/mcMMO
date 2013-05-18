@@ -157,6 +157,7 @@ public class HerbalismManager extends SkillManager {
         }
 
         applyXpGain(xp);
+        mcMMO.p.debug("[Award XP] " + getPlayer().getName() + " " + SkillType.HERBALISM + " BLOCK_BREAK " + blockState.getBlock().getType());
 
         if (drop == null) {
             return;

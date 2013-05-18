@@ -34,6 +34,7 @@ import org.bukkit.metadata.FixedMetadataValue;
 import com.gmail.nossr50.mcMMO;
 import com.gmail.nossr50.config.AdvancedConfig;
 import com.gmail.nossr50.datatypes.player.McMMOPlayer;
+import com.gmail.nossr50.datatypes.skills.SkillType;
 import com.gmail.nossr50.events.fake.FakeEntityDamageByEntityEvent;
 import com.gmail.nossr50.events.fake.FakeEntityDamageEvent;
 import com.gmail.nossr50.party.PartyManager;
@@ -474,6 +475,7 @@ public class EntityListener implements Listener {
         }
 
         UserManager.getPlayer(player).getTamingManager().awardTamingXP(entity);
+        mcMMO.p.debug("[Award XP] " + player.getName() + " " + SkillType.TAMING + " " + event.getEventName() + " " + entity.getType());
     }
 
     /**

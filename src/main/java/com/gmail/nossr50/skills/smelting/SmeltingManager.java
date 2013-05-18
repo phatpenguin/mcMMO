@@ -93,6 +93,7 @@ public class SmeltingManager extends SkillManager {
         Player player = getPlayer();
 
         applyXpGain(Smelting.getResourceXp(resourceType));
+        mcMMO.p.debug("[Award XP] " + getPlayer().getName() + " " + SkillType.SMELTING + " smeltProcessing " + resourceType);
 
         if (Permissions.doubleDrops(player, skill) && SkillUtils.activationSuccessful(getSkillLevel(), getActivationChance(), Smelting.secondSmeltMaxChance, Smelting.secondSmeltMaxLevel)) {
             ItemStack newResult = result.clone();

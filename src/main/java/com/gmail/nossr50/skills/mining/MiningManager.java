@@ -59,6 +59,7 @@ public class MiningManager extends SkillManager {
         Player player = getPlayer();
 
         applyXpGain(Mining.getBlockXp(blockState));
+        mcMMO.p.debug("[Award XP] " + getPlayer().getName() + " " + SkillType.MINING + " BLOCK_BREAK " + blockState.getBlock().getType());
 
         if (!Permissions.doubleDrops(player, skill)) {
             return;
@@ -143,6 +144,7 @@ public class MiningManager extends SkillManager {
             if (Misc.getRandom().nextFloat() < (yield + oreBonus)) {
                 if (!mcMMO.getPlaceStore().isTrue(blockState)) {
                     xp += Mining.getBlockXp(blockState);
+                    mcMMO.p.debug("[Award XP] " + getPlayer().getName() + " " + SkillType.MINING + " BLASTMINING " + blockState.getBlock().getType());
                 }
 
                 Misc.dropItem(blockState.getLocation(), blockState.getData().toItemStack(1)); // Initial block that would have been dropped

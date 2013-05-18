@@ -263,7 +263,9 @@ public class FishingManager extends SkillManager {
             treasure = getFishingTreasure();
         }
 
+        mcMMO.p.debug("[Award XP] " + getPlayer().getName() + " " + SkillType.FISHING + " CATCH FISH");
         if (treasure != null) {
+            mcMMO.p.debug("[Award XP] " + getPlayer().getName() + " " + SkillType.FISHING + " TREASURE = " + treasure.getDrop().getType());
             player.sendMessage(LocaleLoader.getString("Fishing.ItemFound"));
 
             treasureXp = treasure.getXp();

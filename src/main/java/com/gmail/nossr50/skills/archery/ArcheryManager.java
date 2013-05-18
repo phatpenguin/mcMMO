@@ -48,6 +48,7 @@ public class ArcheryManager extends SkillManager {
         }
 
         applyXpGain((int) (firedLocation.distanceSquared(targetLocation) * Archery.DISTANCE_XP_MULTIPLIER));
+        mcMMO.p.debug("[Award XP] " + getPlayer().getName() + " " + SkillType.ARCHERY + " distance: " + firedLocation.distanceSquared(targetLocation) + target.getType());
     }
 
     /**

@@ -3,6 +3,7 @@ package com.gmail.nossr50.runnables.skills;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import com.gmail.nossr50.mcMMO;
 import com.gmail.nossr50.datatypes.player.McMMOPlayer;
 import com.gmail.nossr50.datatypes.skills.SkillType;
 
@@ -25,6 +26,7 @@ public class AwardCombatXpTask extends BukkitRunnable {
     public void run() {
         int health = target.getHealth();
         int damage = baseHealth - health;
+        mcMMO.p.debug("[Award XP] " + mcMMOPlayer.getPlayer().getName() + " " + skillType + " " + target.getType() + " damage = " + damage);
 
         // May avoid negative xp, we don't know what other plugins do with the entity health
         if (damage <= 0) {
