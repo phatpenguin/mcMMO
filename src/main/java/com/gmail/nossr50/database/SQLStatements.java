@@ -18,6 +18,7 @@ public class SQLStatements {
         this.statements = new HashMap<String, PreparedStatement>();
         this.conn = conn;
         loadStatements(conn, tablePrefix);
+        instance = this;
     }
 
     private void loadStatements(Connection conn, String tablePrefix) throws SQLException {
@@ -136,5 +137,10 @@ public class SQLStatements {
         catch (SQLException e) {
             // Meh
         }
+    }
+
+    public void newConnection(Connection connection, String tablePrefix) throws SQLException {
+        closeStatements();
+        new SQLStatements(connection, tablePrefix);
     }
 }

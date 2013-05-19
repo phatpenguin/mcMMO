@@ -478,7 +478,7 @@ public final class SQLDatabaseManager extends DatabaseManager {
      * This allows for MySQL to time out idle connections as needed by
      * server operator, without affecting McMMO, while still providing
      * protection against a database outage taking down Bukkit's tick
-     * processing loop due to attemping a database connection each
+     * processing loop due to attempting a database connection each
      * time McMMO needs the database.
      *
      * @return the boolean value for whether or not we are connected
@@ -538,6 +538,9 @@ public final class SQLDatabaseManager extends DatabaseManager {
         // Leave if connection is good
         try {
             if (connection != null && !connection.isClosed()) {
+                // Re-prepare statements
+                SQLStatements.getInstance().newConnection(connection, tablePrefix);
+
                 // Schedule a database save if we really had an outage
                 if (reconnectAttempt > 1) {
                     new SQLReconnectTask().runTaskLater(mcMMO.p, 5);
