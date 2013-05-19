@@ -525,6 +525,8 @@ public final class SQLDatabaseManager extends DatabaseManager {
         // Cleanup after ourselves for GC and MySQL's sake
         if (exists && !isClosed) {
             try {
+                SQLStatements.getInstance().closeStatements();
+
                 connection.close();
             }
             catch (SQLException ex) {
