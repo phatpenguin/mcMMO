@@ -131,6 +131,8 @@ public class SQLStatements {
             }
         }
 
+        statements.clear();
+
         try {
             conn.close();
         }
