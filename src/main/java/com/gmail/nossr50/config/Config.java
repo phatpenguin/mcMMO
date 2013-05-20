@@ -298,4 +298,5 @@ public class Config extends AutoUpdateConfigLoader {
     /* XP Formula Multiplier */
     public int getFormulaMultiplierCurve() { return config.getInt("Experience.Formula.Curve_Modifier", 20); }
     public double getFormulaSkillModifier(SkillType skill) { return config.getDouble("Experience.Formula.Modifier." + StringUtils.getCapitalized(skill.toString())); }
+    public boolean getFormulaExponential() { return config.getBoolean("Experience.Formula.Use_Exponential_Curve", false); }
 }

@@ -59,6 +59,8 @@ commands:
         description: View detailed mcMMO info on another player
     mmoupdate:
         description: Convert from Flat File to MySQL
+    mcconvert:
+        description: Convert from linear to exponential formula
     partychat:
         aliases: [pc, p]
         description: Toggle Party chat or send party chat messages
